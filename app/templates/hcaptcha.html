@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	{% block javascripts %}
+	<script src="{{ url_for('static', filename='js/hcaptcha_api.js') }}" async defer></script>
+	{% endblock %}
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+	<title>{{ request.company_name }} | {% block title %}{% endblock %}</title>
+</head>
+<body>
+<center>
+	<div class="h-captcha" data-sitekey="75d69f30-f408-4793-952d-a887196efe8d"></div>
+</center>
+<script>
+	function getCookie(t) {
+		let e = t + "=", n = decodeURIComponent(document.cookie).split(";"), o = 0;
+		for (; o < n.length; o++) {
+			let i;
+			for (i = n[o]; " " === i.charAt(0);) i = i.substring(1);
+			if (0 === i.indexOf(e)) return i.substring(e.length, i.length);
+		}
+		return ""
+	}
+	getCookie("hostinger")
+	document.cookie = "hostinger=;expires=Thu, 01 Jan 1970 00:00:01 GMT;"
+	//location.reload();
+</script>
+</body>
+</html>
